@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}  
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" >
+</head>
+<body>
+    <header>
+        <nav class="navbar bg-body-tertiary bg-primary sticky-top " data-bs-theme="dark">
+            <div class="container-fluid">
+              <span class="navbar-brand mb-0 h1">Results</span>
+            </div>
+        </nav>
+    </header>
+    
+    <main>
+       <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Project name</th>
+                <th scope='col'>Created_At</th>
+                <th scope='col'>Outcomes</th>
+                <th scope="col">info</th>
+              </tr>
+            </thead>
+             <tbody class="table-group-divider">
+             {% for entry in data %}
+              <tr>
+                {% for col in entry.actual_data %}
+                <th scope="row">{{col}}</th>
+                {% endfor%}
+                <td><a class="btn btn-primary" href={{entry.button}} role="button">Link</a></td>
+
+              </tr>
+              {% endfor %} 
+            </tbody>
+          </table> 
+    </main>
+    <script src="{% static 'bootstrap.js' %}"></script>
+</body>
+</html>
